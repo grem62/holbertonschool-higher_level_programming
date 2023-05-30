@@ -8,4 +8,4 @@ if number > 5:
 if number < 6:
     print(f"and is less than 6 and not 0")
 if number == 0:
-    print(f"and is zero")
+    print(f"and is 0")
