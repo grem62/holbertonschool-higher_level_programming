@@ -14,6 +14,6 @@ def matrix_divided(matrix, div):
             'Each row of the matrix must have the same size')
     if(not isinstance(div,(int,float))):
         raise TypeError('div must be a number')
-    if(div is 0):
+    if(div == 0):
         raise ZeroDivisionError('division by zero')
     return [[round(ele / div, 2) for ele in row] for row in matrix]
