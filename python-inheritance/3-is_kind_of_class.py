@@ -1,4 +1,4 @@
-#!/usr/bin/pythin3
+#!/usr/bin/python3
 """
 Définition de la fonction is_kind_of_class
 """
