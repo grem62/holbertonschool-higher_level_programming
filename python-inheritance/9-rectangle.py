@@ -25,4 +25,4 @@ class Rectangle(BaseGeometry):
         width = self.__width
         height = self.__height
         cls = type(self).__name__
-        return ("[{}], {}/{}".format(cls, width, height))
+        return ("[{}] {}/{}".format(cls, width, height))
