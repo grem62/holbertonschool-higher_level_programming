@@ -1,0 +1,8 @@
+#!/usr/bin/ptython3
+
+import json
+
+
+def to_json_string(my_obj):
+    json_representation = json.dumps(my_obj)
+    return json_representation
