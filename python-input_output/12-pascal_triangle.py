@@ -5,6 +5,10 @@ pascal triangle
 
 
 def pascal_triangle(n):
+    """
+    addition des nombre de la ligne précedente pour etablir la nouvelle ligne
+    """
+
     if n <= 0:
         return []
 
