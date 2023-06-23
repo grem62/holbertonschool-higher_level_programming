@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+serialization of an object
+"""
 
 
 def class_to_json(obj):
