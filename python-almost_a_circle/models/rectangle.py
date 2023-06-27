@@ -30,8 +30,8 @@ class Rectangle(Base):
 
         @property
         def x(self):
-            return self.x
+            return self.__x
 
         @property
         def y(self):
-            return self.y
+            return self.__y
