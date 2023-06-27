@@ -10,6 +10,8 @@ class Rectangle(Base):
     give a rectangle
     """
 
+    signe_rectangle = '#'
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """
         define axe and the width, height
@@ -73,3 +75,15 @@ class Rectangle(Base):
     def area(self):
         """define a area for the rectangle"""
         return (self.height * self.width)
+
+    def display(self):
+        "display for the rectangle"
+        height = self.height
+        width = self.width
+        x = self.x
+        y = self.y
+
+        for i in range(y):
+            print()
+        for j in range(height):
+            print(" " * self.x + "#" * width)
