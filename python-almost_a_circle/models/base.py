@@ -36,7 +36,7 @@ class Base:
 
         """
         if list_objs is None:
-            return []
+            list_objs = []
         else:
             file_json = (cls.__name__ + '.json')
             json_string = \
