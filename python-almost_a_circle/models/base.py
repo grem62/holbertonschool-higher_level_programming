@@ -24,7 +24,7 @@ class Base:
         """
         json string
         """
-        if list_dictionaries is None or []:
+        if list_dictionaries is None or list_dictionaries is []:
             return '[]'
 
         else:
