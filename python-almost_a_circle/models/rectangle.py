@@ -116,3 +116,15 @@ class Rectangle(Base):
             self.x = kwargs['x']
         if 'y' in kwargs:
             self.y = kwargs['y']
+
+    def to_dictionary(self):
+        """
+        dictionnary rectangle
+        """
+        return {
+                'x': self.x,
+                'y': self.y,
+                'id': self.id,
+                'width': self.width,
+                'height': self.height
+                    }
