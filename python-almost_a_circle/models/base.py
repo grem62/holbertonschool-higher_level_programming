@@ -35,13 +35,9 @@ class Base:
         """
 
         """
-        if list_objs is None:
-            list_objs = []
-
-        else:
-            json_string = []
-            file_json = (cls.__name__ + '.json')
-            json_string = \
+        json_string = []
+        file_json = (cls.__name__ + '.json')
+        json_string = \
                 cls.to_json_string([b.to_dictionary() for b in list_objs])
-            with open(file_json, 'w') as f:
+        with open(file_json, 'w') as f:
                 f.write(json_string)
