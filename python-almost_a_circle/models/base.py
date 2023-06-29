@@ -40,6 +40,6 @@ class Base:
 
         else:
             file_json = (cls.__name__ + '.json')
-            json_string = cls.to_json_string([a.to_dictionary() for a in list_objs])
+            json_string = [a.to_dictionary() for a in list_objs]
             with open(file_json, 'w') as f:
-                f.write(json_string)
+                f.write(cls.to_json_string(json_string))
