@@ -21,10 +21,8 @@ if __name__ == '__main__':
 
     cities = cur.fetchall()
 
-    for index in cities:
-
-        resultat = ", ".join(city[0] for city in cities)
-        print(resultat)
+    cities = set([row[0] for row in cities])
+    print(", ".join(cities))
 
     cur.close()
     db.close()
