@@ -18,5 +18,6 @@ cur.execute("SELECT * FROM states ORDER BY id ASC;")
 states = cur.fetchall()
 for state in states:
     print(state)
-    cur.close()
-    db.close()
+
+cur.close()
+db.close()
