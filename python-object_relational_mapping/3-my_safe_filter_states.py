@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-"""Lists all states  starting with 'N' from the database hbtn_0e_0_usa."""
-import MySQLdb
+""" SQL injection to delete all records of a table…"""
 import sys
+import MySQLdb
 
 if __name__ == '__main__':
+
     db = MySQLdb.connect(
         host="localhost", port=3306,
         user=sys.argv[1],
@@ -12,10 +13,12 @@ if __name__ == '__main__':
 
     cur = db.cursor()
 
+
     cur.execute(
-            "SELECT * FROM states \
-            WHERE name LIKE '%s' \
-            ORDER BY states.id ASC;".format(sys.argv[4]))
+                "SELECT * FROM states \
+                WHERE name=%s \
+                ORDER BY states.id ASC", (sys.argv[4],)
+                )
 
     states = cur.fetchall()
 
