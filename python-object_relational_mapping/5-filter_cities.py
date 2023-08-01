@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     cities = cur.fetchall()
 
-    cities = set([row[0] for row in cities])
+    cities = [row[0] for row in cities]
     print(", ".join(cities))
 
     cur.close()
