@@ -1,4 +1,4 @@
-#!/user/bin/pyton3
+#!/usr/bin/pyton3
 """class state"""
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
