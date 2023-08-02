@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Lists all State objects from the database hbtn_0e_6_usa
+lists all State objects that contain the letter a
+from the database hbtn_0e_6_usa
 """
 
 
@@ -22,9 +23,9 @@ if __name__ == "__main__":
     session = Session()
 
     # Display the results
-    for instance in session.query(State).order_by(State.id):
-        if 'a' in instance.name:
-            print("{:d}: {:s}".format(instance.id, instance.name))
+    for state in session.query(State).order_by(State.id):
+        if "a" in state.name:
+            print("{}: {}".format(state.id, state.name))
 
     # Close the session
     session.close()
