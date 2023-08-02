@@ -7,10 +7,13 @@ from sqlalchemy import Column, Integer, String
 Base = declarative_base()
 
 
-class State(Base):
+class City(Base):
     """
     State class that represents a state table in MySQL
     """
-    __tablename__ = 'states'
-    id = Column(Integer, nullable=False, primary_key=True)
+    __tablename__ = 'cities'
+    id = Column(Integer, autoincrement=True, nullable=False, primary_key=True,)
     name = Column(String(128), nullable=False)
+    state_id = Column(String,  ForeignKey("state_id"), nullable=False)
+
+    

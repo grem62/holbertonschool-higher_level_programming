@@ -1,13 +1,10 @@
-#!/usr/bin/python3
-"""
-Lists all State objects from the database hbtn_0e_6_usa
-"""
-
+#!/usr/bin/python
 
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
+from model_city import City
 
 
 if __name__ == "__main__":
@@ -16,14 +13,12 @@ if __name__ == "__main__":
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
                            format(sys.argv[1], sys.argv[2], sys.argv[3]),
                            pool_pre_ping=True)
-
-    # Create a session
+    
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Display the results
-    for instance in session.query(State).order_by(State.id).first:
-        print("{:d}: {:s}".format(instance.id, instance.name))
+    cities = session.query(State, City)\
+    .filter(City.state_id == State.id)\
+    .order_by(City.id)\
+        print(f'{state.name}: {city.id} {city.name}')
 
-    # Close the session
-    session.close()

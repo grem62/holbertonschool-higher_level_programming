@@ -21,13 +21,14 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # search_name
-    search_name = sys.argv[4]
-    state = session.query(State).filter(State.name == search_name)
-    if state:
-        print("{:d}".format(state.id))
-    else:
-        print("Not found")
+    state_to_change = session.query(State).filter_by(id=2).first()
+
+    # Change the name of the State to "New Mexico"
+    if state_to_change:
+        state_to_change.name = "New Mexico"
+
+        # Commit the changes to the database
+        session.commit()
 
     # Close the session
     session.close()
