@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Lists all State objects from the database hbtn_0e_6_usa
+adds the State object “Louisiana” to the database hbtn_0e_6_usa
 """
 
 
@@ -21,13 +21,18 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    state_to_change = session.query(State).filter_by(id=2).first()
+    # Retrieve the State object with id = 2
+    state_id_to_update = 2
+    state_to_update = session.query(State) \
+        .filter_by(id=state_id_to_update).first()
 
-    # Change the name of the State to "New Mexico"
-    if state_to_change:
-        state_to_change.name = 'New Mexico'
-
-        # Commit the changes to the database
+    # Check if the State object exists
+    if state_to_update is None:
+        print("State with id = {} not found".format(state_id_to_update))
+    else:
+        # Update the name of the State object
+        new_name = "New Mexico"
+        state_to_update.name = new_name
         session.commit()
 
     # Close the session
