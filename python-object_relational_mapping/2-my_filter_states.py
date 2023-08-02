@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lists all states  starting with 'N' from the database hbtn_0e_0_usa"""
+"""Lists all states  starting with 'N' from the database hbtn_0e_0_usa."""
 import MySQLdb
 import sys
 
@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
     cur.execute(
             "SELECT * FROM states \
-            WHERE name = '{}' \
+            WHERE BINARY name = '{}' \
             ORDER BY states.id ASC;".format(sys.argv[4]))
 
     states = cur.fetchall()
