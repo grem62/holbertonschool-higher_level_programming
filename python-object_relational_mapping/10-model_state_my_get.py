@@ -1,34 +1,35 @@
 #!/usr/bin/python3
 """
-Lists all State objects from the database hbtn_0e_6_usa
+Prints the State object with the name passed as argument from
+the database hbtn_0e_6_usa
 """
 
-
-import sys
+from sys import argv
+from model_state import Base, State
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from model_state import Base, State
 
 
 if __name__ == "__main__":
 
-    # Replace 'localhost' with your MySQL server hostname if needed
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
-                           format(sys.argv[1], sys.argv[2], sys.argv[3]),
-                           pool_pre_ping=True)
-
-    # Create a session
+    user = argv[1]
+    passwd = argv[2]
+    db = argv[3]
+    engine = create_engine(
+        'mysql+mysqldb://{}:{}@localhost/{}'.
+        format(user, passwd, db), pool_pre_ping=True)
+    Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    state_to_change = session.query(State).filter_by(id=2).first()
+    # Query
+    state_name_searched = argv[4]
+    query = session.query(State).filter_by(name=state_name_searched).first()
+    # Conditions
+    if query:
+        print("{:d}".format(query.id))
+    else:
+        print("Not found")
 
-    # Change the name of the State to "New Mexico"
-    if state_to_change:
-        state_to_change.name = "New Mexico"
-
-        # Commit the changes to the database
-        session.commit()
-
-    # Close the session
+    # Close session
     session.close()
