@@ -1,29 +1,32 @@
 #!/usr/bin/python3
 """
-Lists all State objects from the database hbtn_0e_6_usa
+return all state objects from database
 """
 
 
-import sys
+from sys import argv
+from model_state import Base, State
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from model_state import Base, State
 
 
 if __name__ == "__main__":
 
-    # Replace 'localhost' with your MySQL server hostname if needed
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
-                           format(sys.argv[1], sys.argv[2], sys.argv[3]),
-                           pool_pre_ping=True)
-
-    # Create a session
+    # make engine
+    user = argv[1]
+    passwd = argv[2]
+    db = argv[3]
+    engine = create_engine(
+        f'mysql+mysqldb://{user}:{passwd}@localhost/{db}', pool_pre_ping=True
+    )
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Display the results
-    for instance in session.query(State).order_by(State.id).first:
-        print("{:d}: {:s}".format(instance.id, instance.name))
+    # query python
+    firstInstance = session.query(State).order_by(State.id).first()
+    if firstInstance:
+        print("{:d}: {:s}".format(firstInstance.id, firstInstance.name))
+    else:
+        print("Nothing")
 
-    # Close the session
     session.close()
